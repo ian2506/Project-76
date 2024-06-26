@@ -9,13 +9,13 @@ path = 'Pneumothorax-New-Dataset'
 img = cv2.imread("Pneumothorax-New-Dataset/1_image_100.jpg")
 
 # Load the model
-loadPneumothoraxPredictionModel = load_model("age_model_50epochs.h5', compile=False")
+loadPneumothoraxDetectionModel = load_model("age_model_50epochs.h5', compile=False")
 try:    
     resizedImg = cv2.resize(img, (200, 200))
     resizedImg = np.array([resizedImg])
 
     # Pridict if the image is infected or not and save it in variable 'prediction'
-    prediction = loadPneumothoraxPredictionModel.predict
+    prediction = loadPneumothoraxDetectionModel.predict
 
     # If prediction is less then 0.5 then save "infected" in variable 'text" else save "uninfected"
     if prediction < 0.5:
